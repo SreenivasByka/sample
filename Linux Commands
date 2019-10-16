@@ -1,0 +1,423 @@
+Linux and Unix Practical example for Developers and Beginners/Devops people Use full commands and L1 support
+
+1) login to the unix/solaris server 
+	username: nbcu
+	passwd	: *******
+	
+You will log in to the server. It will take you to default home_directory.
+
+2) pwd 
+it shows/prints the present working directory
+
+3)ls -l 
+
+gives listing of the files in present directory
+
+4) cd ..
+takes you to previous directory
+
+5)mkdir <directory>
+will create directory
+
+6) mkdir -p /home/jb/j1/j2/j3
+
+will create all the non-existing directories at a stretch
+
+
+7)vi <file_name>
+
+opens file for reading/editing
+
+8)cat <file_name>
+
+display contents of file
+
+9)more <file_name>
+
+displays page by page contents of file
+
+10) tail <file_name>
+shows last 10 lines of file
+
+use tail -f for continous update of file_name
+
+head <file_name>
+shows first 10 lines of file_name
+
+11) touch <file_name>
+creates a zero/dummy file
+
+12)ln file1 file2 
+creates link of file1 to file2
+
+13) file <file_name>
+
+shows what type of file it is like
+
+$ file *
+acrawley.html:  ascii text
+admin:          directory
+afiedt.buf:     ascii text
+autosys_env_IBKNYR1:    commands text
+
+
+14) cd /home/<directory_name>
+
+takes you to /home/<directory_name> directory
+likewise you can give and directory
+Note: remember to give from the beginning like '/' is very important. Its called the root directory. In Unix/solaris/<any_falvor_of_unix> path is specified from the root i.e., '/'
+If you have root privileges you can go to any directory.
+For normal users its not possible. 
+
+15)clear
+clears the screen
+
+
+16) cd /usr/bin
+
+this directory has all the commands of unix. you can say ls -l or ls for listing all the commands in that directory and can try executing each of the commands.
+if u have any doubt on any command just say "man <command_name> like if you want to know what ls command will do give "man ls", it displays man page.
+
+Similarly /usr/sbin has administrative related commands
+/usr/lib has libraries
+and
+
+/etc consists of system administrative and tuning files
+
+17)who
+
+will display which users are logged into system.
+
+18)$w
+
+will  display more info abt the users logged in
+
+19)once you login to the system your home directory will be set. in between if you navigate/go to other directories and after that if you give "cd " it will take you back to your home direcory.
+
+20) ps -ef
+
+shows process status of various active processes.(use more/other options to get more info)
+
+21) rm <file_name>
+will delete file specified
+
+22)rm * 
+
+will delete all the files in the present directory (BE CAREFUL WHILE GIVING THIS COMMAND)
+
+23) grep <pattern> file_name
+
+checks pattern/word in file name specified
+
+24) chmod 777 <file_name>
+changes file_name/directory permissions 
+chmod -R 777 /<directory_name>
+changes permissions recursively all the files and direcories under parent directory
+
+25) chown owner:group <file_name>
+changes owner and group for the file_name
+
+Similarly  chown -R owner:group /<directory>
+changes ownership/group recursively all the files and direcories under parent directory
+
+26)rsh <server_name>
+rsh -l <login_name> <server_name>
+rcp file1 file2 
+
+accessing remote servers (This requires pre-configuration on remote servers like .rhosts and hosts.equiv)
+
+27) gunzip <file_name>
+unzips file name
+
+gzip <file_name>
+zips file_name
+
+compress <file_name>
+compresses file_name  (gzip/compress uses different algorithm for (compression)
+
+uncompress <file_name>
+uncompresses file_name
+
+pack <file_name>
+unpack <file_name>
+
+packs/unpacks file_name 
+
+All the above can be used on directory for compression
+
+28) which <file_name>
+shows if the file_name/command exists and if exists where its path is
+
+29)bc -l
+bench calculator
+
+30)ulimit
+shows the size of file, time, memory etc available for current shell
+
+31)man <command_name>
+gives help/man pages of command given
+
+32)write <user_name>
+you can write messages to the logged in users on the server
+
+33)wall 
+this command writes/sends messages to all users logged in (useful while shutting down m/c)
+
+34)fuser -k /dev/pts/2
+
+kills terminal pts/2 and closes its connection
+
+35)nohup <command_name> &
+
+nohup is very useful command. it runs the command even the telnet connection is closed/broken.
+& is used for running command in background.
+
+36)crontab -l
+
+shows the cron jobs running/scheduled for the current user.
+you can copy/redirect the jobs to a ascii file and edit/add jobs and resubmit to cron as
+
+-->$crontab -l > present_cronjobs
+-->edit/add entries to present_cronjobs
+-->$crontab present_cronjobs  (This will submit/resubmit the jobs in file presnt_cronjobs to CRON)
+
+37)at
+
+at is very useful command for running jobs at later time
+like
+at <time> command/script (will run the script at specified time)
+
+at -l will show the at jobs scheduled
+
+38)killing an unwanted process
+
+$ps -ef|grep <process_name> (will show the PID of the process in the 2nd field)
+$kill -9 <PID>
+
+39)who -b
+
+shows when the system has booted
+
+40)$uptime
+
+will show how long the system has been up and also shows cpu load, number of users logged in etc.
+
+41)last
+
+will show the users logged in/out information
+
+last <user_name>  shows particular user logins/logouts
+last reboot 	shows all the system boots
+
+
+42)id
+shows current user's UID, username and GID and group name
+
+43)hostid
+
+shows unique identifier of host 
+
+44) more /etc/passwd
+
+it will show all the logins, home directories of the users.
+
+45) more /etc/shadow
+
+shows password encryption info and other user related info (only root has access to this file)
+
+46) more /etc/system
+this file has all n/w, h/w, memory etc tunable parameters/values
+
+47) more /etc/inittab
+after the bootup checks this file for which runlevel to enter 
+
+48) find / -name <file_name> -print
+
+for finding any file name. ( giving '/' will find files from root directory)
+
+49)hostname
+
+will give your system name.
+
+50)uname -a
+
+will show system name, solaris version, platform and some more information
+
+51)useradd
+
+will add user (u have to root user to do this)
+it has more options for specifying home directory, shell group etc.
+
+Similarly userdel deletes username
+
+52)df -k
+
+will show all the mounted filesystems. 
+
+53)mount
+will show all mounted file systems with additional info like large filesystem support etc
+
+54)pkginfo 
+
+Gives/shows info about installed packages/software on system
+
+55)showrev -p
+
+shows all patches installed on system
+
+56)init 0
+
+will shutdown the system
+
+57) init 6
+
+will reboot the system (other init options are 1, 2, 3, 5 and S)
+
+58)cd /var/adm
+
+this directory has system/application logs. Please check all the files and its contents for more information.
+
+59)cd /etc/rc.d
+
+this directory has all startup scripts.
+there will be more of this kind. 
+rc2.d, rc3.d, rc0.d, rc5.d, rc6.d etc...
+each directory has scripts which will run in its own run level.
+a run level is nothing but the init option u give while starting or stopping the system
+suppose you give init 0, system will check in /etc/rc0.d for all the files to be executed.
+
+60) /usr/sbin/ifconfig -a
+
+will show the ip-address of the system.
+
+lo0  : loopback interface
+hme0 : hundred MBPS n/w interface
+qfe0 : quad ehternet interface 
+
+61)ping <hostname>
+
+will ping and test connectivity between your system and the hostname you give in the ping.
+you can also give ping <ip-address>
+
+
+
+62) rm -r <directory>
+
+will delete all the contents in the directory specified recursively (BE CAREFUL WHILE GIVING THIS COMMAND)
+
+
+63)alias l='ls -l'
+alias dir='ls -l|grep "^d"'
+alias p='pwd'
+alias c='clear'
+
+Short cuts for commonly used commands
+
+
+64)tar -cvf allfile.tar /<directory_name>   copies all files under directory to allfile.tar
+tar -xvf allfile.tar    /home	retrieves tar files to /home directory
+tar -tvf allfile.tar   reads contents of allfile.tar
+
+
+65)find . -type f -print -exec grep -i <type_ur_text_here> {} \;
+	this is recursive grep
+
+66) rm - <-filename>
+for deleting special files
+Ex:-
+# ls -l
+total 16
+-rw-r--r--   1 root     other         13 Dec 24 14:57 -k
+# rm - -k
+# ls -l
+total 0
+#
+
+67) rm "<file name>"
+
+delete file names with spaces in between 
+
+
+for checking sun related h/w conf.
+
+68) top --- shows all process and memory, cpu etc utilisation
+69) prtconf  -- shows h/w, cpu, memory conf
+70) mount   -- will show the disks mounted and all partitions
+71) cd /usr/platform/sun4u/sbin/prtdiag -v  --- shows additional configuration of memory, cpu speed etc..
+72) sysdef -- shows system h/w, memory, and other internal configurable/tunable paramters
+73) ifconfig unplumb hme0   --- will disable ehternet interface hme0
+74) ifconfig plumb hme0	   --- will enable hme0
+
+for performance monitoring and diagnosing bottlenecks
+
+75) iostat 	-- disk utilisation, cpu, io wait etc (iostat -xcM gives extented statistics of disk activity, cpu etc)
+76) vmstat	 -- memory and virtual memory utilisation
+77) sar    	 -- system archive report, gives total system report for cpu, memory, disk, etcc
+78) netstat 	 --- shows network statistics, like how many connected on which services/ports
+79) mpstat 	-- shows multi cpu statistics like load on each cpu.
+80) psrinfo 	 -- gives processor/s information (online/offline)
+81) nfsstat	--- nfs mounted filesystems statistics
+82) prstat	--- shows process related statistics (present from solaris 2.7 and above)
+
+for disk configurations u need ---
+
+83) format -- will show all the disks configuration and partitions
+84) prtvtoc -- shows disk partition/geometry info 
+
+85) uadmin 2 0 
+stops system immediately within 5 seconds(BE CAREFUL-- has to be to root)
+86) halt
+halts processor and reboots machine (BECAREFUL -- has to be root)
+87)adb 
+debugging tool (for reading/debugging corefiles)
+
+88) mkfile 60m jithendra
+
+creates a filename of size 60mb which can be used for adding to swap space
+
+89) swap -a jithendra
+attaches the 60mb file to swap space (Very useful when swap space is running out)
+
+90)swap -l 
+lists the swap contents
+
+91) sleep 5
+waits for 5 seconds (useful in shell scripts)
+
+92)cat <file_name> |awk '{print $1}'
+Prints the first field of the filed ($1, $2... can be used to display more fields)
+
+93) :1,$s/<old>/<new>/g
+use the above for global replacement of text in ascii files using vi editor
+
+94) :1,$s/^M//g
+remove Ctrl M character in text files using vi editor
+
+95) isainfo -v
+
+shows supported platforms (32-bit, 64-bit)
+
+96)strings <file_name>
+
+shows printable strings in any type of file (binary, object, text etc)
+
+97)truss -p <PID>
+
+shows system calls and signals (useful when debugging process)
+
+98) stty erase ^H
+sets backspace for deleting typed character
+
+99) echo $TERM
+shows terminal type like vt100, vt220 etc.
+($PATH, $ORACLE_HOME etc can be used with echo)
+
+100) set -o vi
+
+While your shell is set to KSH use this command to display history of commands you are typing
+Press ESCAPE and k for showing previous commands
+
+101)env
+shows all the environmental variables set to your current session
+
+
